@@ -18,11 +18,19 @@
  * Description: Maximus Incident Management System is patrol and case related project.
  */
 
-const path = require("path");
-const fs = require("fs-extra");
+const express = require("express");
+const cors = require("cors");
+const app = express();
 
-if (fs.existsSync(path.join("assets", "hello1"))) {
-  console.log("yes");
-} else {
-  console.log("not");
-}
+app.use(cors());
+
+app.use("/", express.static("view"));
+app.get("*", (req, res) => {
+  res.sendFile(__dirname + "view", "index.html");
+});
+
+app.listen(4000, (err) => {
+  if (err) throw err;
+
+  console.log("angular view is runing on port 4000");
+});

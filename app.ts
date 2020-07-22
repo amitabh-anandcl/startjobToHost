@@ -13,14 +13,10 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 
 app.use("/uploadFile", express.static("assets"));
-app.use("/", express.static("view"));
+
 //app.use(bodyParser.urlencoded({extended: false}));
 
 app.use("/api", routes);
-
-app.get("*", (req: any, res: any, next: any) => {
-  res.sendFile(path.join(__dirname, "view", "index.html"));
-});
 
 app.use((err: any, req: any, res: any, next: any) => {
   let statusCode = err.status || 500;
