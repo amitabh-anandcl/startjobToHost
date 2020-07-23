@@ -2,7 +2,7 @@
  * File: c:\Users\Nitish\Downloads\Compressed\startup-jobs-in-app\startup-jobs-in-app\index.js
  * Project: c:\Users\Nitish\Downloads\Compressed\startup-jobs-in-app\startup-jobs-in-app
  * Project Name: MAXIMUS INCIDENT MANAGEMENT SYSTEM
- * Created Date: Saturday, July 18th 2020, 12:53:12 pm
+ * Created Date: Thursday, July 23rd 2020, 4:03:49 pm
  * Author: Amitabh Anand
  * -----
  * Created By: Amitabh Anand amitabh.anandcl@gmail.com
@@ -19,18 +19,23 @@
  */
 
 const express = require("express");
-const cors = require("cors");
+
 const app = express();
+const path = require("path");
+
+const cors = require("cors");
 
 app.use(cors());
 
 app.use("/", express.static("view"));
-app.get("*", (req, res) => {
-  res.sendFile(__dirname + "view", "index.html");
+
+app.get("*", (req, res, next) => {
+  res.sendFile(path.join(__dirname, "view", "index.html"));
 });
 
 app.listen(4000, (err) => {
-  if (err) throw err;
-
-  console.log("angular view is runing on port 4000");
+  if (err) {
+    throw err;
+  }
+  console.log("angular app is running on port 4000");
 });
