@@ -2,11 +2,22 @@ var express = require("express");
 var app = express();
 import routes from "./routes/index";
 var bodyParser = require("body-parser");
+import * as fs from "fs";
 import * as cors from "cors";
+import * as morgan from "morgan";
+
 import * as path from "path";
 //var urlencodedParser = bodyParser.urlencoded({ extended: false })
 var mysql = require("mysql");
 var dbConfig = require("./config/dbConfig");
+
+let accessLogStream = fs.createWriteStream(
+  path.join(__dirname, "accessApi.log"),
+  { flags: "a" }
+);
+
+app.use(morgan("combined", { stream: accessLogStream }));
+
 app.use(cors());
 app.use(bodyParser.json());
 app.use(express.json());

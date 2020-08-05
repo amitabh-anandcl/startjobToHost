@@ -1,8 +1,15 @@
 const express = require("express");
-
+const morgan = require("morgan");
 const app = express();
 const path = require("path");
+const fs = require("fs");
 
+let accessLogStream = fs.createWriteStream(
+  path.join(__dirname, "accessWeb.log"),
+  { flags: "a" }
+);
+
+app.use(morgan("combined", { stream: accessLogStream }));
 const cors = require("cors");
 
 app.use(cors());
