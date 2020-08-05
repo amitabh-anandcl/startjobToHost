@@ -29,9 +29,9 @@ app.get("*", (req, res, next) => {
 const httpServer = http.createServer(app);
 const httpsServer = https.createServer(credentials, app);
 
-httpServer.listen(8080, () => {
+httpServer.listen(80, () => {
   console.log("started port 80");
 });
-httpsServer.listen(4433, () => {
+httpsServer.listen(443, () => {
   console.log("started on 443 port http port");
 });

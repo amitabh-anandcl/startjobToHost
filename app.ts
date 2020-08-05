@@ -59,11 +59,11 @@ const httpsServer = https.createServer(credentials, app);
 //   console.log("Node app is running on port 3000");
 // });
 
-httpServer.listen(80, () => {
-  console.log("started port 80");
+httpServer.listen(8080, () => {
+  console.log("started port 8080");
 });
-httpsServer.listen(443, () => {
-  console.log("started on 443 port http port");
+httpsServer.listen(4433, () => {
+  console.log("started on 4433 port http port");
 });
 
 module.exports = app;
