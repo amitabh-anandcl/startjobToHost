@@ -2,8 +2,8 @@ var express = require("express");
 var app = express();
 import routes from "./routes/index";
 var bodyParser = require("body-parser");
-import cors from "cors";
-import path from "path";
+import * as cors from "cors";
+import * as path from "path";
 //var urlencodedParser = bodyParser.urlencoded({ extended: false })
 var mysql = require("mysql");
 var dbConfig = require("./config/dbConfig");

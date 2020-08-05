@@ -1,10 +1,10 @@
 import { Request, Response, NextFunction, Router } from "express";
 import { CandidateDetailsController } from "../controller/candidateDetailsController";
 import { CandidateDetailsValidator } from "../validator/candidateDetailsValidator";
-import multer from "multer";
-import app_root_path from "app-root-path";
-import fs from "fs";
-import path from "path";
+import * as multer from "multer";
+import * as app_root_path from "app-root-path";
+import * as fs from "fs";
+import * as path from "path";
 const route = Router();
 //app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 

@@ -1,7 +1,7 @@
 import connection from "../../../config/dbConfig";
 import * as nodemailer from "nodemailer";
 const sgMail = require("@sendgrid/mail");
-import dotenv from "dotenv";
+import * as dotenv from "dotenv";
 
 const envFound = dotenv.config();
 if (envFound.error) {
@@ -83,7 +83,6 @@ export class CandidateDetailsModel {
   }
 
   public async sendCredentialsForCvUpload(data: any) {
-    
     try {
       //console.log(data);
       sgMail.setApiKey(process.env.API_KEY);
@@ -113,12 +112,11 @@ export class CandidateDetailsModel {
             </div>
           </div>
         </div>
-    `
-    
+    `,
+
         // html: '<p>Hello  `+data.fullName+` `+data.Email+` `+data.mobile+` `+data.candidateSummary+` `+data.CandidateEduBackup+`
         // </p>'
         // //<br>Your maxIMuS username and password are shown below.<br>,
-        
       };
 
       await sgMail.send(msg, true, (err: any, result: any) => {

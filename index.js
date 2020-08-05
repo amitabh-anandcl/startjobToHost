@@ -19,5 +19,3 @@ app.listen(4000, (err) => {
   }
   console.log("angular app is running on port 4000");
 });
-
-const AWS = require("aws-sdk");

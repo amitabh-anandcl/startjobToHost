@@ -1,10 +1,10 @@
 import { Request, Response, NextFunction, Router } from "express";
 import { EmployerDetailsController } from "../controller/employerDetails.controller";
 import { EmployerDetailsValidator } from "../validator/employerDetailsValidator";
-import path from "path";
-import fs from "fs-extra";
-import app_root_path from "app-root-path";
-import multer from "multer";
+import * as path from "path";
+import * as fs from "fs-extra";
+import * as app_root_path from "app-root-path";
+import * as multer from "multer";
 const route = Router();
 let inputValidator = new EmployerDetailsValidator();
 
