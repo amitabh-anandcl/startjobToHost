@@ -59,8 +59,8 @@ const httpsServer = https.createServer(credentials, app);
 //   console.log("Node app is running on port 3000");
 // });
 
-httpServer.listen(8080, () => {
-  console.log("started port 8080");
+httpServer.listen(3000, () => {
+  console.log("started port 3000");
 });
 httpsServer.listen(4433, () => {
   console.log("started on 4433 port http port");
