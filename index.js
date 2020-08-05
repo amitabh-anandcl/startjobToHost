@@ -4,6 +4,12 @@ const app = express();
 const path = require("path");
 const fs = require("fs");
 
+const http = require("http");
+const https = require("https");
+const privateKey = fs.readFileSync("cert/privateKey.key", "utf8");
+const certificate = fs.readFileSync("cert/certificate.crt", "utf8");
+const credentials = { key: privateKey, cert: certificate };
+
 let accessLogStream = fs.createWriteStream(
   path.join(__dirname, "accessWeb.log"),
   { flags: "a" }
@@ -20,9 +26,12 @@ app.get("*", (req, res, next) => {
   res.sendFile(path.join(__dirname, "view", "index.html"));
 });
 
-app.listen(80, (err) => {
-  if (err) {
-    throw err;
-  }
-  console.log("angular app is running on port 4000");
+const httpServer = http.createServer(app);
+const httpsServer = https.createServer(credentials, app);
+
+httpServer.listen(8080, () => {
+  console.log("started port 80");
+});
+httpsServer.listen(4433, () => {
+  console.log("started on 443 port http port");
 });
