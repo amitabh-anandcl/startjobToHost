@@ -14,8 +14,8 @@
     "posix-stop": " sudo pm2 kill && sudo pm2 status",
     "win32-clean": "rm -r dist -f",
     "win32-prod-build": "tsc app.ts --outDir dist && cp .env dist/.env && cp index.js dist/index.js && cp package.json dist/package.json && cp -r view dist/view && cp -r assets dist/assets",
-    "win32-production": "cd dist && echo Starting Server with node production && sudo  pm2 start index.js && sudo pm2 start app.js",
-    "win32-stop": " sudo pm2 kill && sudo pm2 status"
+    "win32-production": "cd dist && echo Starting Server with node production && pm2 start index.js && pm2 start app.js",
+    "win32-stop": "pm2 kill && sudo pm2 status"
   },
   "author": "",
   "license": "ISC",
