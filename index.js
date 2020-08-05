@@ -13,7 +13,7 @@ app.get("*", (req, res, next) => {
   res.sendFile(path.join(__dirname, "view", "index.html"));
 });
 
-app.listen(4000, (err) => {
+app.listen(80, (err) => {
   if (err) {
     throw err;
   }
