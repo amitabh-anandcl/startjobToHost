@@ -58,7 +58,7 @@ export class JsonWebTokens {
       } else {
         res.status(200).send({
           status: false,
-          tokenExp: false,
+          tokenExp: true,
         });
       }
     });
