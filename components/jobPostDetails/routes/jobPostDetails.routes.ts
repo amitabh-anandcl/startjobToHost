@@ -99,7 +99,7 @@ export default (app: any) => {
       }
     }
   );
-
+  //  hello
   route.get(
     "/getAllJobPostDetailsList",
     jwts.checkANdVerify,
