@@ -3,6 +3,7 @@ const morgan = require("morgan");
 const app = express();
 const path = require("path");
 const fs = require("fs");
+// const compression = require("compression");
 
 const http = require("http");
 const https = require("https");
@@ -15,6 +16,7 @@ let accessLogStream = fs.createWriteStream(
   { flags: "a" }
 );
 
+// app.use(compression({ level: 9 }));
 app.use(morgan("combined", { stream: accessLogStream }));
 const cors = require("cors");
 

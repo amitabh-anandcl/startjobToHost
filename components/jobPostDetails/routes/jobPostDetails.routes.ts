@@ -1,14 +1,24 @@
 import { Request, Response, NextFunction, Router } from "express";
 import { JobPostDetailsController } from "../controller/jobPostDetails.controller";
 import { JobPostDetailsValidator } from "../validator/jobPostDetailsValidator";
-
+import { JsonWebTokens } from "../../auth/services/json.service";
 const route = Router();
 let inputValidator = new JobPostDetailsValidator();
 
 export default (app: any) => {
   app.use(route);
   let jobPostDetailsController = new JobPostDetailsController();
+  const jwts = new JsonWebTokens();
 
+  route.get(
+    "/checkLogin",
+    jwts.checkANdVerify,
+    (req: Request, res: Response, next: NextFunction) => {
+      res.send({
+        status: true,
+      });
+    }
+  );
   route.post(
     "/addUpdateJobPostDetails",
 
@@ -92,7 +102,7 @@ export default (app: any) => {
 
   route.get(
     "/getAllJobPostDetailsList",
-
+    jwts.checkANdVerify,
     async (req: Request, res: Response, next: NextFunction) => {
       try {
         //let data = req.body;

@@ -6,6 +6,7 @@ import * as fs from "fs-extra";
 import * as app_root_path from "app-root-path";
 import * as multer from "multer";
 const route = Router();
+import { JsonWebTokens } from "../../auth/services/json.service";
 let inputValidator = new EmployerDetailsValidator();
 
 const storage = multer.diskStorage({
@@ -30,6 +31,7 @@ var upload = multer({ storage: storage });
 export default (app: any) => {
   app.use(route);
   let employerDetailsController = new EmployerDetailsController();
+  let authService: JsonWebTokens = new JsonWebTokens();
 
   route.post(
     "/getEmployerDetailsByEmployerId",
@@ -146,16 +148,20 @@ export default (app: any) => {
 
   route.post(
     "/employerLogin",
-    async (req: Request, res: Response, next: NextFunction) => {
+    async (req: Request | any, res: Response, next: NextFunction) => {
       try {
+        console.log(req.jwt);
         let data = req.body;
         let response: any = await employerDetailsController.employerLogin(data);
         if (Array.isArray(response)) {
           if (response[2][0]["@o_status"] == 106) {
+            const jwt = authService.accessGrantToUser(req.body);
+            console.log(jwt);
             res.status(200).send({
               status: true,
               data: {
                 employerLogin: response[0],
+                token: jwt,
               },
               message: "Employer Login successfully.",
             });
