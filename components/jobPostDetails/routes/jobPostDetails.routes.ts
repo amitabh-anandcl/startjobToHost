@@ -102,7 +102,7 @@ export default (app: any) => {
   //  hello
   route.get(
     "/getAllJobPostDetailsList",
-    jwts.checkANdVerify,
+    // jwts.checkANdVerify,
     async (req: Request, res: Response, next: NextFunction) => {
       try {
         //let data = req.body;
