@@ -59,7 +59,7 @@
     "multer": "^1.4.2",
     "mysql": "^2.18.1",
     "nodemailer": "^6.4.10",
-    "redis": "^2.8.0",
+    "redis": "^3.1.1",
     "sendgrid": "^5.2.3",
     "ts-node": "^8.6.2",
     "ts-node-dev": "^1.0.0-pre.44",
